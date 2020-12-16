@@ -1,0 +1,15 @@
+/**/
+.splash {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+  }
+  .d-none {
+    display: none;
+  }
+  .d-block {
+    display: block;
+  }

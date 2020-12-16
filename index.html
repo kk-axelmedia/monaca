@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    ons.ready(function() {
+      console.log("Onsen UI is ready!");
+    });
+
+    document.addEventListener('show', function(event) {
+      var page = event.target;
+      var titleElement = document.querySelector('#toolbar-title');
+
+      if (page.matches('#first-page')) {
+        titleElement.innerHTML = 'friendlink';
+      } else if (page.matches('#second-page')) {
+        titleElement.innerHTML = '自社運営ポータルサイト';
+      }
+    });
+
+    if (ons.platform.isIPhoneX()) {
+      document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+      document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- MEMO 20201216 作業場所 -->
+  <ons-page id="window"></ons-page>
+
+  <ons-template id="tab1.html">
+    <ons-page id="first-page">
+      <iframe src="https://friendlink.jp/sp/" width="100%" height="100%"></iframe>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="tab2.html">
+    <ons-page id="second-page">
+      <!-- MEMO 20201216 作業場所 -->
+      <ons-list style="background: #000; height: 100%;">
+        <ons-list-item>
+          <a href="http://friendlink.jp/my/"><img src="my_color.png"></a>
+          </ons-list-item>
+        <ons-list-item>
+          <a href="https://friendlink.jp/openlink/"><img src="open_color.png"></a>
+        </ons-list-item>
+        <ons-list-item>
+          <a href="https://friendlink.jp/1up/"><img src="1up_color.png"></a>
+        </ons-list-item>
+        <ons-list-item>
+          <a href="https://leadshare.jp/"><img src="leadshare_logo_re.png"></a>
+        </ons-list-item>
+      </ons-list>
+
+    </ons-page>
+  </ons-template>
+
+<!-- MEMO 20201216 作業場所 -->
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
+  <script>
+    function splash(){
+      $("#window").html("<div class='splash' id='splash' style='background: #000; width: 100%; height: 100%;'><img src='https://friendlink.jp/sp/img/common/logo.png'></div>").css('display','block');
+    }
+    function splash_off(){
+      $("#window").html("<ons-page id='window'><ons-tabbar position='bottom'><ons-tab label='Friend Link' page='tab1.html' active></ons-tab><ons-tab label='各種サービス' page='tab2.html'></ons-tab></ons-tabbar></ons-page>").css('display','block');
+    }
+
+    window.onload = splash();
+    setTimeout("splash_off()", 1000);
+  </script>
+</body>
+</html>
